@@ -23,14 +23,6 @@ public class Actor {
     @Column(name="last_update")
     private LocalDateTime lastUpdate;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "film_actor",
-            joinColumns = @JoinColumn(name = "actor_id"),
-            inverseJoinColumns = @JoinColumn(name = "film_id")
-    )
-    private Set<Film> films = new HashSet<>();
-
     public Actor() {
     }
 
