@@ -2,6 +2,8 @@ package com.sakila.rest.services;
 
 import com.sakila.rest.entities.Film;
 
-public interface FilmService extends IService<Film, Integer> {
+import java.util.List;
 
+public interface FilmService extends IService<Film, Integer> {
+    List<Film> findByTitleContaining(String title);
 }

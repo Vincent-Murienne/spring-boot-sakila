@@ -16,35 +16,35 @@ public class ActorController {
         this.service = service;
     }
 
-    /** localhost:9093/sakila/actor/all || /** localhost:9093/sakila/city */
+    /** localhost:9094/sakila/actor/all || /** localhost:9094/sakila/city */
     @GetMapping(value = {"", "/all"})
     @Transactional
     public List<Actor> getAllActors() {
         return service.readAll();
     }
 
-    /** localhost:9093/sakila/actor/get/{id} */
+    /** localhost:9094/sakila/actor/get/{id} */
     @GetMapping("/get/{id}")
     @Transactional
     public Actor getActorById(@PathVariable("id") Integer id) {
         return service.read(id);
     }
 
-    /** localhost:9093/sakila/actor/search/firstname/{name} */
+    /** localhost:9094/sakila/actor/search/firstname/{name} */
     @GetMapping("/search/firstname/{name}")
     @Transactional
     public List<Actor> searchByFirstName(@PathVariable("name") String name) {
         return service.findByFirstNameContaining(name);
     }
 
-    /** localhost:9093/sakila/actor/search/lastname/{name} */
+    /** localhost:9094/sakila/actor/search/lastname/{name} */
     @GetMapping("/search/lastname/{name}")
     @Transactional
     public List<Actor> searchByLastName(@PathVariable("name") String name) {
         return service.findByLastNameContaining(name);
     }
 
-    /** localhost:9093/sakila/actor/search/{name} */
+    /** localhost:9094/sakila/actor/search/{name} */
     @GetMapping("/search/{name}")
     @Transactional
     public List<Actor> searchByName(@PathVariable("name") String name) {

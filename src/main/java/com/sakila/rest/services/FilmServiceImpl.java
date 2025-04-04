@@ -39,4 +39,9 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> readAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Film> findByTitleContaining(String title) {
+        return repository.findByTitleContainingIgnoreCase(title);
+    }
 }
