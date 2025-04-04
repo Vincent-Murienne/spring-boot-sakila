@@ -1,4 +1,6 @@
 package com.sakila.rest.services;
 
-public class ActorService {
+import com.sakila.rest.entities.Actor;
+
+public interface ActorService extends IService<Actor, Integer> {
 }
