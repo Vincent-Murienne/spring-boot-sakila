@@ -29,4 +29,25 @@ public class ActorController {
     public Actor getActorById(@PathVariable("id") Integer id) {
         return service.read(id);
     }
+
+    /** localhost:9093/sakila/actor/search/firstname/{name} */
+    @GetMapping("/search/firstname/{name}")
+    @Transactional
+    public List<Actor> searchByFirstName(@PathVariable("name") String name) {
+        return service.findByFirstNameContaining(name);
+    }
+
+    /** localhost:9093/sakila/actor/search/lastname/{name} */
+    @GetMapping("/search/lastname/{name}")
+    @Transactional
+    public List<Actor> searchByLastName(@PathVariable("name") String name) {
+        return service.findByLastNameContaining(name);
+    }
+
+    /** localhost:9093/sakila/actor/search/{name} */
+    @GetMapping("/search/{name}")
+    @Transactional
+    public List<Actor> searchByName(@PathVariable("name") String name) {
+        return service.findByNameContaining(name);
+    }
 }

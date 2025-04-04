@@ -3,6 +3,8 @@ package com.sakila.rest.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "actor")
@@ -19,7 +21,15 @@ public class Actor {
     private String lastName;
 
     @Column(name="last_update")
-    private LocalDateTime lastUpdate ;
+    private LocalDateTime lastUpdate;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = @JoinColumn(name = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id")
+    )
+    private Set<Film> films = new HashSet<>();
 
     public Actor() {
     }
