@@ -1,10 +1,10 @@
 package com.sakila.rest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "actor")
@@ -21,7 +21,7 @@ public class Actor {
     private String lastName;
 
     @Column(name="last_update")
-    private LocalDateTime lastUpdate;
+    private LocalDateTime lastUpdate ;
 
     public Actor() {
     }

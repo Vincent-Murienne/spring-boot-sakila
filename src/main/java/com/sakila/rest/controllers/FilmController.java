@@ -25,6 +25,12 @@ public class FilmController {
         return service.readAll();
     }
 
+    @GetMapping("/by-actor/{actorId}")
+    @Transactional
+    public List<Film> getFilmsByActor(@PathVariable Integer actorId) {
+        return service.findByActorId(actorId);
+    }
+
     /** localhost:9094/sakila/film/search/{title} */
     @GetMapping("/search/{title}")
     @Transactional

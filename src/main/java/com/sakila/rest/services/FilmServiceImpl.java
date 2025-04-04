@@ -41,6 +41,11 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public List<Film> findByActorId(Integer actorId) {
+        return repository.findByActorsId(actorId);
+    }
+
+    @Override
     public List<Film> findByTitleContaining(String title) {
         return repository.findByTitleContainingIgnoreCase(title);
     }

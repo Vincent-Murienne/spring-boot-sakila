@@ -23,7 +23,16 @@ public class FilmServiceImplTest {
         log.info("<<<<<<readAll START>>>>>>");
         var films = service.readAll();
         films.forEach(f->log.trace("{}",f));
-        log.info("Nbre de pays : {}",films.size());
+        log.info("Nbre de films : {}",films.size());
         log.info("<<<<<<readAll STOP >>>>>>");
+    }
+
+    @Test
+    void readAllByActor() {
+        log.info("<<<<<<readAllByActor START>>>>>>");
+        var films = service.findByActorId(1);
+        films.forEach(f->log.info("{}",f));
+        log.info("Nbre d'acteurs : {}",films.size());
+        log.info("<<<<<<readAllByActor STOP >>>>>>");
     }
 }
