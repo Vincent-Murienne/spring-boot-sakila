@@ -1,14 +1,12 @@
 package com.sakila.rest.services;
 
 import com.sakila.rest.entities.Actor;
-import com.sakila.rest.entities.Film;
 import com.sakila.rest.repositories.ActorRepository;
 import com.sakila.rest.repositories.FilmRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,5 +61,10 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public List<Actor> findByNameContaining(String name) {
         return actorRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
+    }
+
+    @Override
+    public List<Actor> findByFilmId(Integer film_id) {
+        return actorRepository.findByFilmsId(film_id);
     }
 }

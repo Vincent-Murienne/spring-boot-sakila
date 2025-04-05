@@ -20,6 +20,10 @@ public class Actor {
     @Column(name = "last_name")
     private String lastName;
 
+    @ManyToMany(mappedBy = "actors")
+    @JsonIgnore
+    private List<Film> films;
+
     @Column(name="last_update")
     private LocalDateTime lastUpdate ;
 
@@ -52,6 +56,14 @@ public class Actor {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 
     public LocalDateTime getLastUpdate() {

@@ -18,6 +18,7 @@ public class FilmServiceImplTest {
     @Autowired
     FilmRepository repository;
 
+    /* Tous les films */
     @Test
     void readAll() {
         log.info("<<<<<<readAll START>>>>>>");
@@ -27,6 +28,7 @@ public class FilmServiceImplTest {
         log.info("<<<<<<readAll STOP >>>>>>");
     }
 
+    /* Films pour un acteur */
     @Test
     void readAllByActor() {
         log.info("<<<<<<readAllByActor START>>>>>>");
@@ -34,5 +36,15 @@ public class FilmServiceImplTest {
         films.forEach(f->log.info("{}",f));
         log.info("Nbre d'acteurs : {}",films.size());
         log.info("<<<<<<readAllByActor STOP >>>>>>");
+    }
+
+    /* Recherche sur une partie du film */
+    @Test
+    void searchByFilmContaining() {
+        log.info("<<<<<<<searchBysearchByFilmContaining START>>>>>>>");
+        var films = repository.findByTitleContainingIgnoreCase("pen");
+        films.forEach(c->log.trace("{}", c));
+        log.info("Nbre d'acteurs : {}",films.size());
+        log.info("<<<<<<<searchByFilmContaining END>>>>>>>");
     }
 }

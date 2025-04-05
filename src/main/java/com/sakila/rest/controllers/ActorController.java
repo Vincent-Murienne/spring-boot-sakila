@@ -16,15 +16,15 @@ public class ActorController {
         this.service = service;
     }
 
-    /** localhost:9094/sakila/actor/all || /** localhost:9094/sakila/city */
-    @GetMapping(value = {"", "/all"})
+    /** localhost:9094/sakila/actor || /** localhost:9094/sakila/actor/ || /** localhost:9094/sakila/actor/all */
+    @GetMapping(value = {"","/","/all"})
     @Transactional
     public List<Actor> getAllActors() {
         return service.readAll();
     }
 
-    /** localhost:9094/sakila/actor/get/{id} */
-    @GetMapping("/get/{id}")
+    /** localhost:9094/sakila/actor/{id} */
+    @GetMapping("/{id}")
     @Transactional
     public Actor getActorById(@PathVariable("id") Integer id) {
         return service.read(id);
@@ -49,5 +49,12 @@ public class ActorController {
     @Transactional
     public List<Actor> searchByName(@PathVariable("name") String name) {
         return service.findByNameContaining(name);
+    }
+
+    /** localhost:9094/sakila/actor/search/by-film/{filmId} */
+    @GetMapping("/search/by-film/{filmId}")
+    @Transactional
+    public List<Actor> getActorsByFilm(@PathVariable Integer filmId) {
+        return service.findByFilmId(filmId);
     }
 }

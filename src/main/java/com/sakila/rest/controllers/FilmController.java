@@ -16,10 +16,11 @@ public class FilmController {
 
     private final FilmService service;
 
+    /** localhost:9094/sakila/film || /** localhost:9094/sakila/film/ || /** localhost:9094/sakila/film/all */
     public FilmController(FilmService service) {
         this.service = service;
     }
-    @GetMapping("/all")
+    @GetMapping({"","/","/all"})
     @Transactional
     public List<Film> getAllFilms() {
         return service.readAll();
